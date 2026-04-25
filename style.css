@@ -246,3 +246,355 @@
         font-size: 1.5rem;
     }
 }
+
+
+
+
+
+/* Events Section Styles */
+.events-section {
+    background-color: #000;
+    color: #fff;
+    padding: 60px 0 100px 0; /* Extra padding at bottom */
+    width: 100%;
+}
+
+.events-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 800px; /* Keeps tickets from stretching too wide */
+    margin: 0 auto;
+}
+
+/* The Ticket Card Container */
+.ticket-card {
+    display: flex;
+    background-color: #1a1a1a; /* Slightly lighter than pure black to stand out */
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover Lift Effect */
+.ticket-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(168, 0, 0, 0.3); /* Red glow to match your theme */
+}
+
+/* Left Side: Event Details */
+.ticket-content {
+    flex: 1;
+    padding: 30px 40px;
+    border-right: 3px dashed #333; /* The perforated ticket line */
+}
+
+.event-movie {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.event-details {
+    font-size: 1.1rem;
+    color: #bbb;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.event-details .icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Right Side: Action Button */
+.ticket-action {
+    width: 220px; /* Fixed width for the tear-off section */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #111; /* Slight contrast for the tear-off stub */
+}
+
+.book-btn {
+    background: #d31010; /* KUET red from the hero section */
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.book-btn:hover {
+    background: #a80000; /* Darker red on hover */
+    transform: scale(1.05);
+}
+
+/* THE MAGIC TRICK: Cut-out Circles 
+   This creates the top and bottom notches exactly on the dashed line.
+*/
+.ticket-card::before, 
+.ticket-card::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #000; /* Must match the section background color */
+    border-radius: 50%;
+    right: 200px; /* 220px width of action area - 20px radius of circle */
+}
+
+/* Top Cutout */
+.ticket-card::before {
+    top: -20px; 
+}
+
+/* Bottom Cutout */
+.ticket-card::after {
+    bottom: -20px;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 600px) {
+    .ticket-card {
+        flex-direction: column;
+    }
+    
+    .ticket-content {
+        border-right: none;
+        border-bottom: 3px dashed #333; /* Perforated line moves to bottom */
+        padding: 20px;
+    }
+
+    .ticket-action {
+        width: 100%;
+        padding: 25px 20px;
+    }
+
+    /* Move the cutouts to the sides for mobile */
+    .ticket-card::before, 
+    .ticket-card::after {
+        right: auto;
+        bottom: 60px; /* Adjust based on action area height */
+    }
+
+    .ticket-card::before {
+        left: -20px;
+        top: auto;
+    }
+
+    .ticket-card::after {
+        right: -20px;
+        bottom: 65px; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* About Section Styles */
+.about-section {
+    background-color: #000;
+    padding: 100px 0;
+    color: #ffffff;
+    border-top: 1px solid #1a1a1a;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 80px; /* Large gap for a clean, spacious look */
+}
+
+/* Left Side Image */
+.about-image {
+    flex: 1;
+}
+
+.image-frame {
+    position: relative;
+    border: 1px solid #333;
+    padding: 10px;
+    background: #0a0a0a;
+}
+
+/* Red Viewfinder corners for a camera effect */
+.image-frame::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 40px;
+    height: 40px;
+    border-top: 4px solid #d31010;
+    border-left: 4px solid #d31010;
+}
+
+.about-image img {
+    width: 100%;
+    display: block;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+.about-image img:hover {
+    filter: brightness(1);
+}
+
+/* Right Side Text */
+.about-text {
+    flex: 1.2;
+}
+
+.about-title {
+    color: #d31010;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.highlight-text {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.description-box p {
+    color: #bbb;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+/* Feature List (Quick bullet points) */
+.about-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #d31010;
+    border-radius: 50%;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .about-text {
+        padding: 0 20px;
+    }
+
+    .highlight-text {
+        font-size: 1.8rem;
+    }
+
+    .about-features {
+        justify-content: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* Announcement Bar Styling */
+.event-announcement {
+    display: block;
+    background: linear-gradient(90deg, #d31010, #800000); /* Cinematic red gradient */
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 100; /* Stays above everything */
+    transition: background 0.3s ease;
+}
+
+.event-announcement:hover {
+    background: linear-gradient(90deg, #f01414, #a00000);
+}
+
+.announcement-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Pulsing "Live" effect */
+.live-dot {
+    height: 8px;
+    width: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.click-text {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    padding-left: 15px;
+}
+
+/* Smooth Scrolling Logic */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive adjustment */
+@media (max-width: 600px) {
+    .click-text {
+        display: none; /* Hide extra text on small phones to save space */
+    }
+}
