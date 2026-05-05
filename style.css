@@ -598,3 +598,216 @@ html {
         display: none; /* Hide extra text on small phones to save space */
     }
 }
+
+
+.site-footer {
+    background-color: #050505;
+    padding: 40px 20px 20px;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* This helps keep the center part truly centered */
+.footer-left, .footer-right {
+    flex: 1; 
+}
+
+.footer-left .footer-logo {
+    color: #e50914; /* Cinematic Red */
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.footer-center {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.footer-center a {
+    color: #bbb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-center a:hover {
+    color: #fff;
+}
+
+.footer-right {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.footer-right a {
+    color: #fff;
+    font-size: 1.2rem;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.footer-right a:hover {
+    color: #e50914;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #222;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Fix for mobile phones */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .footer-right {
+        justify-content: center;
+    }
+}
+
+
+
+
+/* FACEBOOK SECTION STYLING */
+.facebook-section {
+    background: #000000 ; /* Same texture as reference */
+    padding: 100px 0;
+    overflow: hidden; /* Important for slide animations */
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.facebook-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px; /* Space between mobile and text */
+}
+
+/* MOBILE FRAME STYLING */
+.mobile-mockup-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    max-width: 320px; /* Mobile size */
+}
+
+.mobile-frame {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 30px;
+    padding: 15px;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1); /* Subtle glow */
+    position: relative;
+    overflow: hidden;
+    border: 8px solid #333; /* Phone bezel */
+}
+
+.fb-screenshot {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* LOW APPEARANCE BOTTOM FADE */
+.fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* How far up the fade goes */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    z-index: 2;
+}
+
+/* RIGHT CONTENT STYLING */
+.facebook-content {
+    flex: 2;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.facebook-content h2 {
+    color: #ffffff;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    font-family: 'Arial', sans-serif; /* Adjust to match your reference font */
+}
+
+/* YELLOW BUTTON STYLING */
+.facebook-btn {
+    display: inline-block;
+    background-color: #f7d70c; /* Yellow from reference */
+    color: #000000;
+    padding: 15px 50px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.facebook-btn:hover {
+    background-color: #ffea55;
+    transform: scale(1.05);
+}
+
+/* ANIMATION CLASSES */
+/* Initially hidden states */
+.animate-slide-in-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1s, transform 1s;
+}
+
+.animate-slide-in-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 1s, transform 1s;
+}
+
+/* Active animated states (Added by JavaScript) */
+.animate-active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* RESPONSIVE DESIGN (FOR SMALLER SCREENS) */
+@media (max-width: 768px) {
+    .facebook-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    .facebook-content {
+        text-align: center;
+        align-items: center;
+    }
+    .facebook-content h2 {
+        font-size: 2rem;
+    }
+}
