@@ -92,7 +92,8 @@
     font-weight: 800;
     margin-bottom: 5px;
     letter-spacing: 1px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    animation: heroTitleFadeIn 1s ease-out;
 }
 
 .hero-content .tagline {
@@ -100,6 +101,7 @@
     font-weight: 400;
     margin-bottom: 5px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    animation: heroTaglineFadeIn 1s ease-out 0.3s both;
 }
 
 .hero-content .sub-tagline {
@@ -107,6 +109,29 @@
     font-size: 1.8rem;
     font-weight: 400;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    animation: heroTaglineFadeIn 1s ease-out 0.6s both;
+}
+
+@keyframes heroTitleFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes heroTaglineFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -128,11 +153,34 @@
 
 .section-title {
     text-align: center;
-    color: #a80000; /* Matching the dark red text color */
+    color: #a80000;
     font-size: 2rem;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: #d31010;
+    transform: translateX(-50%);
+    animation: titleUnderline 0.8s ease-out forwards;
+}
+
+@keyframes titleUnderline {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100px;
+    }
 }
 
 .movies-grid {
@@ -149,6 +197,29 @@
     flex-direction: column;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* For smooth animation */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.movie-item:nth-child(1) { animation-delay: 0.1s; }
+.movie-item:nth-child(2) { animation-delay: 0.2s; }
+.movie-item:nth-child(3) { animation-delay: 0.3s; }
+.movie-item:nth-child(4) { animation-delay: 0.4s; }
+.movie-item:nth-child(5) { animation-delay: 0.5s; }
+.movie-item:nth-child(6) { animation-delay: 0.6s; }
+.movie-item:nth-child(7) { animation-delay: 0.7s; }
+.movie-item:nth-child(8) { animation-delay: 0.8s; }
+.movie-item:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* CSS for the hover effect */
@@ -276,7 +347,12 @@
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
+
+.ticket-card:nth-child(1) { animation-delay: 0.1s; }
+.ticket-card:nth-child(2) { animation-delay: 0.3s; }
 
 /* Hover Lift Effect */
 .ticket-card:hover {
@@ -418,10 +494,9 @@
 .about-container {
     display: flex;
     align-items: center;
-    gap: 80px; /* Large gap for a clean, spacious look */
+    gap: 80px;
 }
 
-/* Left Side Image */
 .about-image {
     flex: 1;
 }
@@ -781,19 +856,42 @@ html {
 .animate-slide-in-left {
     opacity: 0;
     transform: translateX(-100px);
-    transition: opacity 1s, transform 1s;
 }
 
 .animate-slide-in-right {
     opacity: 0;
     transform: translateX(100px);
-    transition: opacity 1s, transform 1s;
 }
 
 /* Active animated states (Added by JavaScript) */
-.animate-active {
-    opacity: 1;
-    transform: translateX(0);
+.animate-active.animate-slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+.animate-active.animate-slide-in-right {
+    animation: slideInRight 1s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* RESPONSIVE DESIGN (FOR SMALLER SCREENS) */

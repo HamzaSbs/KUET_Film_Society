@@ -1,25 +1,31 @@
-// Function to handle animations on scroll
-function handleScrollAnimations() {
-    const section = document.getElementById('facebook-follow');
-    const elementsToAnimate = section.querySelectorAll('.animate-slide-in-left, .animate-slide-in-right');
+// Intersection Observer for scroll-triggered animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.2,
+    };
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Add the active class to all elements within the section
-                elementsToAnimate.forEach(element => {
-                    element.classList.add('animate-active');
-                });
-                // Once triggered, unobserve to save performance
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.2 // Start animation when 20% of the section is visible
-    });
+    // Facebook section - repeatable animation
+    const facebookSection = document.getElementById('facebook-follow');
+    if (facebookSection) {
+        const facebookObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animate-active class when in view
+                    entry.target.querySelectorAll('.animate-slide-in-left, .animate-slide-in-right').forEach(el => {
+                        el.classList.add('animate-active');
+                    });
+                } else {
+                    // Remove animate-active class when out of view
+                    entry.target.querySelectorAll('.animate-slide-in-left, .animate-slide-in-right').forEach(el => {
+                        el.classList.remove('animate-active');
+                    });
+                }
+            });
+        }, observerOptions);
 
-    observer.observe(section);
+        facebookObserver.observe(facebookSection);
+    }
 }
 
-// Start the observer when the DOM content has loaded
-document.addEventListener('DOMContentLoaded', handleScrollAnimations);
+// Initialize animations when DOM is ready
+document.addEventListener('DOMContentLoaded', initScrollAnimations);
