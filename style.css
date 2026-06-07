@@ -367,151 +367,340 @@
 .events-section {
     background-color: #000;
     color: #fff;
-    padding: 60px 0 100px 0; /* Extra padding at bottom */
+    padding: 60px 0 100px 0;
     width: 100%;
 }
 
 .events-grid {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    max-width: 800px; /* Keeps tickets from stretching too wide */
-    margin: 0 auto;
+    gap: 40px;
 }
 
-/* The Ticket Card Container */
-.ticket-card {
-    display: flex;
-    background-color: #1a1a1a; /* Slightly lighter than pure black to stand out */
-    border-radius: 12px;
-    position: relative;
+/* Event Card Container */
+.event-card {
+    background-color: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     opacity: 0;
     animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.ticket-card:nth-child(1) { animation-delay: 0.1s; }
-.ticket-card:nth-child(2) { animation-delay: 0.3s; }
+.event-card:nth-child(1) { animation-delay: 0.2s; }
+.event-card:nth-child(2) { animation-delay: 0.4s; }
 
-/* Hover Lift Effect */
-.ticket-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(168, 0, 0, 0.3); /* Red glow to match your theme */
+/* Hover effect - subtle lift and enhanced glow */
+.event-card:hover {
+    transform: translateY(-8px);
+    border-color: #d31010;
+    box-shadow: 0 16px 48px rgba(211, 16, 16, 0.25), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Left Side: Event Details */
-.ticket-content {
+/* Card Inner Layout */
+.event-card-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 300px;
+}
+
+/* Left Side: Event Information */
+.event-info-section {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #222;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111 100%);
+}
+
+.event-content {
     flex: 1;
-    padding: 30px 40px;
-    border-right: 3px dashed #333; /* The perforated ticket line */
 }
 
-.event-movie {
-    font-size: 1.8rem;
+.event-movie-title {
+    font-size: 2rem;
     font-weight: 800;
-    margin-bottom: 15px;
-    color: #fff;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 0%, #bbb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: 0.5px;
 }
 
-.event-details {
-    font-size: 1.1rem;
-    color: #bbb;
-    margin-bottom: 8px;
+.event-meta {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
-.event-details .icon {
-    margin-right: 10px;
+.event-detail {
+    font-size: 0.95rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+
+.event-detail .icon {
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
-/* Right Side: Action Button */
-.ticket-action {
-    width: 220px; /* Fixed width for the tear-off section */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: #111; /* Slight contrast for the tear-off stub */
+.event-card:hover .event-detail {
+    color: #bbb;
 }
 
+.event-description {
+    font-size: 0.9rem;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Book Button */
 .book-btn {
-    background: #d31010; /* KUET red from the hero section */
+    background: linear-gradient(135deg, #d31010 0%, #9b0000 100%);
     color: white;
     text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 8px;
+    padding: 12px 30px;
+    border-radius: 6px;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    transition: background 0.2s ease, transform 0.2s ease;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    border: 2px solid transparent;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .book-btn:hover {
-    background: #a80000; /* Darker red on hover */
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(211, 16, 16, 0.4);
+    border-color: #fff;
 }
 
-/* THE MAGIC TRICK: Cut-out Circles 
-   This creates the top and bottom notches exactly on the dashed line.
-*/
-.ticket-card::before, 
-.ticket-card::after {
-    content: '';
+.book-btn:active {
+    transform: scale(0.98);
+}
+
+/* Right Side: Video Container */
+.event-video-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+/* Event Trailer Video */
+.event-trailer {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+/* Video fade-in animation when playing */
+.event-trailer.playing {
+    opacity: 1;
+}
+
+/* Video Overlay - Gradient with play indicator */
+.video-overlay {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #000; /* Must match the section background color */
-    border-radius: 50%;
-    right: 200px; /* 220px width of action area - 20px radius of circle */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 2;
 }
 
-/* Top Cutout */
-.ticket-card::before {
-    top: -20px; 
+/* Hide overlay when video is playing with sound */
+.event-trailer.playing:not(.muted-fallback) ~ .video-overlay {
+    opacity: 0;
 }
 
-/* Bottom Cutout */
-.ticket-card::after {
-    bottom: -20px;
+.event-trailer.muted-fallback ~ .video-overlay {
+    opacity: 1;
 }
 
-/* Responsive Design for Mobile */
-@media (max-width: 600px) {
-    .ticket-card {
-        flex-direction: column;
+.play-indicator {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    animation: fadeInScale 0.8s ease-out;
+}
+
+.sound-toggle {
+    margin-top: 16px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    display: none;
+}
+
+.sound-toggle:hover {
+    transform: translateY(-1px);
+    background: rgba(211, 16, 16, 0.8);
+    border-color: rgba(255, 255, 255, 0.55);
+}
+
+.event-trailer.muted-fallback ~ .video-overlay .sound-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
     }
-    
-    .ticket-content {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .event-card-inner {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .event-info-section {
         border-right: none;
-        border-bottom: 3px dashed #333; /* Perforated line moves to bottom */
+        border-bottom: 1px solid #222;
+        padding: 30px;
+    }
+
+    .event-video-section {
+        min-height: 250px;
+    }
+
+    .event-movie-title {
+        font-size: 1.6rem;
+    }
+
+    .play-indicator {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .events-grid {
+        gap: 30px;
+    }
+
+    .event-card {
+        border-radius: 6px;
+    }
+
+    .event-info-section {
+        padding: 25px;
+    }
+
+    .event-movie-title {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .event-detail {
+        font-size: 0.85rem;
+    }
+
+    .event-description {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+
+    .book-btn {
+        padding: 10px 25px;
+        font-size: 0.8rem;
+    }
+
+    .event-video-section {
+        min-height: 200px;
+    }
+
+    .play-indicator {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-card-inner {
+        min-height: auto;
+    }
+
+    .event-info-section {
         padding: 20px;
     }
 
-    .ticket-action {
-        width: 100%;
-        padding: 25px 20px;
+    .event-movie-title {
+        font-size: 1.2rem;
     }
 
-    /* Move the cutouts to the sides for mobile */
-    .ticket-card::before, 
-    .ticket-card::after {
-        right: auto;
-        bottom: 60px; /* Adjust based on action area height */
+    .event-detail {
+        font-size: 0.75rem;
     }
 
-    .ticket-card::before {
-        left: -20px;
-        top: auto;
+    .event-description {
+        font-size: 0.75rem;
+        display: none;
     }
 
-    .ticket-card::after {
-        right: -20px;
-        bottom: 65px; 
+    .event-video-section {
+        min-height: 180px;
+    }
+
+    .play-indicator {
+        font-size: 1.2rem;
     }
 }
 
