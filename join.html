@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - KUET Film Society</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="join.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Announcement Banner -->
+    <a href="index.html#events" class="event-announcement">
+        <div class="announcement-content">
+            <span class="live-dot"></span>
+            <p><strong>Next Screening:</strong> Bonolota Express • Friday, Oct 27 • 5:30 PM </p>
+            <span class="click-text">Click Here</span>
+        </div>
+    </a>
+
+    <!-- Header with Navigation -->
+    <header class="join-header">
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="WhatsApp Image 2026-04-15 at 11.22.22 PM.jpeg" alt="KUET Film Society Logo" class="logo">
+                </a>
+            </div>
+            <a href="index.html" class="back-btn">← BACK</a>
+        </nav>
+
+        <div class="join-hero-content">
+            <h1>Join Our Community</h1>
+            <p class="join-tagline">Be Part of Something Cinematic</p>
+        </div>
+    </header>
+
+    <!-- Join Form Section -->
+    <section class="join-form-section">
+        <div class="form-container">
+            <form id="joinForm" class="join-form">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="Full Name" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        id="kuet_mail" 
+                        name="kuet_mail" 
+                        placeholder="KUET Mail (e.g., name@stud.kuet.ac.bd)" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="kuet_roll" 
+                        name="kuet_roll" 
+                        placeholder="KUET Roll Number" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="batch" 
+                        name="batch" 
+                        placeholder="Batch (e.g., 2023)" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="tel" 
+                        id="mobile" 
+                        name="mobile" 
+                        placeholder="Mobile Number" 
+                        pattern="[0-9\-\+\(\)\s]{10,}"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="submit-btn">SUBMIT</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3 class="footer-logo">KUET Film Society</h3>
+            </div>
+
+            <div class="footer-center">
+                <a href="index.html#about">About</a>
+                <a href="index.html#movies">Movies</a>
+                <a href="index.html#events">Events</a>
+            </div>
+
+            <div class="footer-right">
+                <a href="https://www.facebook.com/share/1BJqsBvQ8F/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="mailto:your-email@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.youtube.com/kuetfilmsociety" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KUET Film Society. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="join.js"></script>
+</body>
+</html>
